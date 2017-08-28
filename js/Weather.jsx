@@ -21,7 +21,7 @@ class Weather extends Component {
       .then(response => {
         const arr = [];
         const dataResponse = response.data;
-        Object.entries(dataResponse).forEach(([key, value]) => {
+        Object.entries(dataResponse).forEach(value => {
           arr.push(value);
         });
         const alpha2 = arr.map(obj => obj.alpha2Code);
