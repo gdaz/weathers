@@ -2,11 +2,21 @@
 
 import React, { Component } from "react";
 import ShowCard from "./ShowCard";
-import dataload from "../data.json";
 
 class Search extends Component {
   state = {
     searchTerm: ""
+  };
+  props: {
+    shows: Array<{
+      title: string,
+      year: string,
+      description: string,
+      poster: string,
+      imdbID: string,
+      trailer: string,
+      poster: string
+    }>
   };
   handleSearchTermChange = (
     event: KeyboardEvent & { target: HTMLInputElement }
@@ -28,7 +38,7 @@ class Search extends Component {
           />
         </header>
         <div>
-          {dataload.shows
+          {this.props.shows
             .filter(
               show =>
                 `${show.title} ${show.description}`
