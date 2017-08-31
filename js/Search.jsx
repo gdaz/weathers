@@ -2,21 +2,14 @@
 
 import React, { Component } from "react";
 import ShowCard from "./ShowCard";
+import Header from "./Header";
 
 class Search extends Component {
   state = {
     searchTerm: ""
   };
   props: {
-    shows: Array<{
-      title: string,
-      year: string,
-      description: string,
-      poster: string,
-      imdbID: string,
-      trailer: string,
-      poster: string
-    }>
+    shows: Array<Show>
   };
   handleSearchTermChange = (
     event: KeyboardEvent & { target: HTMLInputElement }
@@ -28,15 +21,11 @@ class Search extends Component {
   render() {
     return (
       <div className="search">
-        <header>
-          <h1>svideo</h1>
-          <input
-            onChange={this.handleSearchTermChange}
-            value={this.state.searchTerm}
-            type="text"
-            placeholder="Seacrh"
-          />
-        </header>
+        <Header
+          searchTerm={this.state.searchTerm}
+          showSearch
+          handleSearchTermChange={this.handleSearchTermChange}
+        />
         <div>
           {this.props.shows
             .filter(
@@ -45,7 +34,7 @@ class Search extends Component {
                   .toUpperCase()
                   .indexOf(this.state.searchTerm.toUpperCase()) >= 0
             )
-            .map(show => <ShowCard key={show.imdbID} show={show} />)}
+            .map(show => <ShowCard key={show.imdbID} {...show} />)}
         </div>
       </div>
     );

@@ -18,7 +18,7 @@ const App = () => (
         <Route exact path="/" component={Landing} />
         <Route
           path="/search"
-          component={props => <Search show={dataload} {...props} />}
+          component={props => <Search shows={dataload.shows} {...props} />}
         />
         <Route path="/weather" component={Weather} />
         <Route

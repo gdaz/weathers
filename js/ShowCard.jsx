@@ -19,22 +19,20 @@ const Image = styled.img`
 `;
 
 const ShowCard = (props: {
-  show: {
-    poster: string,
-    title: string,
-    year: string,
-    description: string
-  }
+  poster: string,
+  title: string,
+  year: string,
+  description: string
 }) => (
   <Wrapper>
     <Image
-      alt={`${props.show.title} Poster`}
-      src={`/public/img/posters/${props.show.poster}`}
+      alt={`${props.title} Poster`}
+      src={`/public/img/posters/${props.poster}`}
     />
     <div>
-      <h3>{props.show.title}</h3>
-      <h4>{props.show.year}</h4>
-      <p>{props.show.description}</p>
+      <h3>{props.title}</h3>
+      <h4>{props.year}</h4>
+      <p>{props.description}</p>
     </div>
   </Wrapper>
 );
